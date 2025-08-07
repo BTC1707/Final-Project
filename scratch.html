@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Water Sports & Threatened Reptiles and Amphibians</title>
+    <style>
+        body {
+            background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        nav, .section, .footer {
+            background-color: rgba(0, 0, 50, 0.75);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            max-width: 900px;
+        }
+
+        h1, h2, h3 {
+            color: #00ffff;
+        }
+
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #00ffff;
+            border: none;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #game-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation back -->
+    <nav>
+        <a href="index.html">← Back to Resume</a>
+    </nav>
+
+    <!-- Header -->
+    <div class="section" id="top">
+        <h1>Welcome to My Interests Page</h1>
+        <p>Explore two passions: Water Sports and Threatened Reptiles and Amphibians!</p>
+    </div>
+
+    <!-- Water Sports -->
+    <div class="section">
+        <h2>My Favorite Water Sports</h2>
+        <ol>
+            <li>Water Skiing
+                <ul>
+                    <li>Slalom Skiing</li>
+                    <li>Combo Skiing</li>
+                </ul>
+            </li>
+            <li>Wakeboarding</li>
+            <li>Tubing</li>
+        </ol>
+    </div>
+
+    <!-- Image -->
+    <div class="section">
+        <h2>On the Water</h2>
+        <img src="water skiiing.png" alt="Water Skiing" width="100%" />
+    </div>
+
+    <!-- YouTube Video -->
+    <div class="section">
+        <h2>Watch It in Action</h2>
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/kTlEgw2EHzU" title="Water Sports Video" frameborder="0" allowfullscreen></iframe>
+
+    </div>
+
+    <!-- Tableau Visualization -->
+    <div class="section">
+        <h2>Tableau Visualization: Threatened Reptiles and Amphibians</h2>
+        <div class='tableauPlaceholder' id='viz1754524703564' style='position: relative; width: 100%; height: 964px;'>
+            <noscript>
+                <a href='#'>
+                    <img alt='Increase of Threatened Reptiles and Amphibians Around the World' 
+                         src='https://public.tableau.com/static/images/Th/ThreatendReptilesandAmphibians/Story1/1_rss.png' 
+                         style='border: none' />
+                </a>
+            </noscript>
+            <object class='tableauViz' style='display:none; width: 100%; height: 964px;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='ThreatendReptilesandAmphibians/Story1' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https://public.tableau.com/static/images/Th/ThreatendReptilesandAmphibians/Story1/1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+            </object>
+        </div>
+        <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
+    </div>
+
+    <!-- Guess That Water Sport Game -->
+    <div class="section" id="game">
+        <h2>Guess That Water Sport Game</h2>
+        <p>Try to guess the water sport based on the hint below!</p>
+        <button id="new-hint">Get Hint</button><br><br>
+        <div id="hint" style="font-style: italic; margin-bottom: 10px;"></div>
+        <input type="text" id="guess-input" placeholder="Type your guess here" />
+        <button id="check-guess">Check Guess</button>
+        <div id="game-feedback"></div>
+    </div>
+
+    <script>
+        const waterSports = [
+            { name: "Water Skiing", hint: "This sport involves being pulled behind a boat on skis." },
+            { name: "Wakeboarding", hint: "You ride a board and do tricks on waves created by a boat." },
+            { name: "Tubing", hint: "You sit on an inflatable tube pulled behind a boat." },
+            { name: "Slalom Skiing", hint: "You ski through a course of buoys on one ski." },
+            { name: "Combo Skiing", hint: "A mix of slalom and trick skiing combined in one run." }
+        ];
+
+        let currentSport = null;
+
+        document.getElementById('new-hint').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * waterSports.length);
+            currentSport = waterSports[randomIndex];
+            document.getElementById('hint').textContent = currentSport.hint;
+            document.getElementById('game-feedback').textContent = '';
+            document.getElementById('guess-input').value = '';
+        });
+
+        document.getElementById('check-guess').addEventListener('click', () => {
+            const userGuess = document.getElementById('guess-input').value.trim().toLowerCase();
+            if (!currentSport) {
+                document.getElementById('game-feedback').textContent = 'Please click "Get Hint" first!';
+                return;
+            }
+            if (userGuess === '') {
+                document.getElementById('game-feedback').textContent = 'Please enter a guess!';
+                return;
+            }
+            if (userGuess === currentSport.name.toLowerCase()) {
+                document.getElementById('game-feedback').textContent = 'Correct! 🎉';
+            } else {
+                document.getElementById('game-feedback').textContent = `Wrong! Try again or get a new hint.`;
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
