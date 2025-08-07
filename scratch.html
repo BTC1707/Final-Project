@@ -42,13 +42,19 @@
             margin-top: 10px;
             font-weight: bold;
         }
+
+        .anchor-nav {
+            margin-top: 10px;
+            display: block;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation back -->
+    <!-- Navigation -->
     <nav>
-        <a href="index.html">← Back to Resume</a>
+        <a href="index.html">← Back to Resume</a> |
+        <a href="#game">Jump to Game</a>
     </nav>
 
     <!-- Header -->
@@ -81,8 +87,7 @@
     <!-- YouTube Video -->
     <div class="section">
         <h2>Watch It in Action</h2>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/kTlEgw2EHzU" title="Water Sports Video" frameborder="0" allowfullscreen></iframe>
-
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kTlEgw2EHzU" title="Water Sports Video" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <!-- Tableau Visualization -->
@@ -124,6 +129,7 @@
         <input type="text" id="guess-input" placeholder="Type your guess here" />
         <button id="check-guess">Check Guess</button>
         <div id="game-feedback"></div>
+        <a href="#top" class="anchor-nav">↑ Back to Top</a>
     </div>
 
     <script>
@@ -165,5 +171,3 @@
 
 </body>
 </html>
-
-
